@@ -1,8 +1,9 @@
-package com.example.githubrepofinder
+package com.example.githubrepofinder.ui
 
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.githubrepofinder.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

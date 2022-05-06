@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/repoDetailsFragment">
+
+    <fragment
+        android:id="@+id/repoDetailsFragment"
+        android:name="com.example.githubrepofinder.ui.RepoDetailsFragment"
+        android:label="RepoDetailsFragment" >
+        <action
+            android:id="@+id/action_repoDetailsFragment_to_readMe"
+            app:destination="@id/readMe" />
+    </fragment>
+    <fragment
+        android:id="@+id/readMe"
+        android:name="com.example.githubrepofinder.ui.ReadMe"
+        android:label="fragment_read_me"
+        tools:layout="@layout/fragment_read_me" />
+</navigation>

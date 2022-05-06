@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GithubRepoFinder</string>
+    <string name="move_to_next_screen">move to next screen</string>
+    <string name="stars">Stars</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
