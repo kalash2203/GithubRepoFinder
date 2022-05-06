@@ -1,7 +1,7 @@
 package com.example.githubrepofinder.model
 
+import com.example.githubrepofinder.response.StarredResponse
+
 data class UserInfo(
-val name : String,
-val profileImage : String,
-val stars : Int,
+val list: List<StarredResponse>
 )

@@ -14,9 +14,11 @@ import com.example.githubrepofinder.databinding.ItemRepoBinding
 import com.example.githubrepofinder.response.StarredResponse
 import com.example.githubrepofinder.utils.RepoListener
 import com.example.githubrepofinder.utils.setImage
+import java.util.*
+import kotlin.collections.ArrayList
 
 class StarredAdapter(val context: Context) : RecyclerView.Adapter<StarredAdapter.StarredResponseHolder>() {
-    private var detailslist: ArrayList<StarredResponse> = ArrayList()
+    private var detailslist: List<StarredResponse> = mutableListOf()
 
     inner class StarredResponseHolder(binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
         val binding: ItemRepoBinding? = DataBindingUtil.bind(itemView)
@@ -54,8 +56,7 @@ holder.binding?.name?.text = detailslist[position].name
 
     @SuppressLint("NotifyDataSetChanged")
     fun getStarredResponse(list: List<StarredResponse>) {
-        detailslist.clear()
-        detailslist = list as ArrayList<StarredResponse>
+        detailslist = list
         notifyDataSetChanged()
     }
 }

@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lenovo/GithubRepoFinder/app/src/main/res/drawable/shape.xml" value="0.2145" />
         <entry key="..\:/Users/lenovo/GithubRepoFinder/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/GithubRepoFinder/app/src/main/res/layout/fragment_base.xml" value="0.1" />
+        <entry key="..\:/Users/lenovo/GithubRepoFinder/app/src/main/res/layout/fragment_starred.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lenovo/GithubRepoFinder/app/src/main/res/layout/item_repo.xml" value="0.4" />
         <entry key="..\:/Users/lenovo/GithubRepoFinder/app/src/main/res/layout/past_session_fragment.xml" value="0.25416666666666665" />
       </map>
