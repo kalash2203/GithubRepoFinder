@@ -17,27 +17,34 @@ import com.example.githubrepofinder.utils.setImage
 import java.util.*
 import kotlin.collections.ArrayList
 
-class StarredAdapter(val context: Context) : RecyclerView.Adapter<StarredAdapter.StarredResponseHolder>() {
+class StarredAdapter(val context: Context, private val todayEventClickListener: RepoListener) :
+    RecyclerView.Adapter<StarredAdapter.StarredResponseHolder>() {
     private var detailslist: List<StarredResponse> = mutableListOf()
 
-    inner class StarredResponseHolder(binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class StarredResponseHolder(binding: ItemRepoBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val binding: ItemRepoBinding? = DataBindingUtil.bind(itemView)
 
-        fun onBind(info: StarredResponse){
+        fun onBind(info: StarredResponse) {
             binding!!.model = info
             binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StarredResponseHolder {
-        val binding: ItemRepoBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_repo, parent, false)
+        val binding: ItemRepoBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_repo,
+            parent,
+            false
+        )
         return StarredResponseHolder(binding)
     }
 
     override fun onBindViewHolder(holder: StarredResponseHolder, position: Int) {
         holder.onBind(detailslist[position])
 
-holder.binding?.name?.text = detailslist[position].name
+        holder.binding?.name?.text = detailslist[position].name
         holder.binding?.stars?.text = detailslist[position].stargazersCount.toString()
         holder.binding?.profileImage?.let {
             Glide.with(context)
@@ -45,7 +52,11 @@ holder.binding?.name?.text = detailslist[position].name
                 .circleCrop()
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
                 .into(it)
-        };
+        }
+
+        holder.binding?.next?.setOnClickListener {
+            todayEventClickListener.onClick(detailslist[holder.adapterPosition],detailslist[position].name!!)
+        }
 
 
     }

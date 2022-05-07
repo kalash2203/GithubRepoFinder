@@ -6,5 +6,6 @@ import com.example.githubrepofinder.response.StarredResponse
 
 interface RepoListener {
 
-    fun onClick(todaySession: StarredResponse)
+    fun onClick(todaySession: StarredResponse, repoName : String)
+
 }

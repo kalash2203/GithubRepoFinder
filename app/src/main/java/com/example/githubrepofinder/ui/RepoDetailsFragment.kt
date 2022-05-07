@@ -5,15 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.githubrepofinder.R
 import com.example.githubrepofinder.adapter.StarredAdapter
 import com.example.githubrepofinder.databinding.FragmentStarredBinding
 import com.example.githubrepofinder.repository.StarredRepository
 import com.example.githubrepofinder.response.StarredResponse
+import com.example.githubrepofinder.utils.Constants.ORGANIZATION
+import com.example.githubrepofinder.utils.Constants.REPO
+import com.example.githubrepofinder.utils.RepoListener
 import com.example.githubrepofinder.viewModel.StarredViewModel
 import com.example.githubrepofinder.viewModelFactory.StarredViewModelFactory
 
-class RepoDetailsFragment : BaseFragment() {
+class RepoDetailsFragment : BaseFragment(),RepoListener {
     private lateinit var binding: FragmentStarredBinding
     private lateinit var starredViewModel: StarredViewModel
     private lateinit var starredViewModelFactory: StarredViewModelFactory
@@ -56,13 +61,22 @@ class RepoDetailsFragment : BaseFragment() {
                 .sortedWith(compareBy { it.stargazersCount })
                 .reversed()
 
+
             binding.rvStarredFragment.visibility = View.VISIBLE
             binding.rvStarredFragment.setHasFixedSize(true)
             val linearLayoutManager = LinearLayoutManager(requireContext())
             binding.rvStarredFragment.layoutManager = linearLayoutManager
-            pastDetailsAdapter = StarredAdapter(requireContext())
+            pastDetailsAdapter = StarredAdapter(requireContext(),this)
             pastDetailsAdapter.getStarredResponse(sortedList)
             binding.rvStarredFragment.adapter = pastDetailsAdapter
         }
+    }
+
+    override fun onClick(todaySession: StarredResponse,repo : String) {
+        val bundle = Bundle()
+        bundle.putString(ORGANIZATION,organizationName)
+        bundle.putString(REPO,repo)
+        Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.action_repoDetailsFragment_to_readMe,bundle)
+
     }
 }

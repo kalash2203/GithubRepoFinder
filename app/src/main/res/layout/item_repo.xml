@@ -74,7 +74,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/profile_image"
-                tools:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+                android:src="@drawable/ic_baseline_arrow_forward_24"
                 android:contentDescription="@string/move_to_next_screen" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
